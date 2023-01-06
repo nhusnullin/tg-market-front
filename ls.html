@@ -1,35 +1,45 @@
 <head>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>    
     
     <style>
         html { font-size: 15px; }
-        body { padding: 1rem; }
-
-        .card {
-            height: 12rem;
-            font-size: 12px; 
-        }
-
-        .card-img{
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            height: 7rem;
-        }
-
-        .card-title{
-            
-        }
+        body { padding: 0.5rem; }
 
         .cards {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            gap: 1rem;
-            
+            gap: 1rem;            
+            row-gap: 1.5rem;
         }
 
+        .card {
+            height: 15rem;
+            font-size: 12px; 
+            position: relative;
+            padding-top: 0.5rem;
+        }
+
+        .card-img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;            
+            height: 7rem;
+        }
+
+        .card-add-btn{
+            position: absolute;
+            height: 30px;
+	        bottom: 0.5rem;
+	        width: 80%;
+            left: 10%;
+            background:#27A5E7;
+            box-shadow:1px 1px 5px #27A5E7;
+            color:#FFFFFF;
+            border-radius:36px;
+            border: none;
+        }
+        
         @media (min-width: 200px) {
             .cards { grid-template-columns: repeat(2, 1fr); }
         }
@@ -41,20 +51,70 @@
         @media (min-width: 600px) {
             .cards { grid-template-columns: repeat(4, 1fr); }
         }
-        
-
+ 
     </style>
 
 </head>
 
 <body>
-    <div class="cards">
-        <div class="card"><img class="card-img" src="pic/1026554365.webp"/><p class="card-title">Жизнь и удивительные приключения морехода Робинзона Крузо | Дефо Даниель</div>
-        <div class="card"><img class="card-img" src="pic/1027482121.webp"/><p class="card-title">Удивительные приключения дядюшки Антифера | Верн Жюль</div>
-        <div class="card"><img class="card-img" src="pic/1031637329.webp"/><p class="card-title">Архив Шерлока Холмса | Конан Дойл Артур</div>
-        <div class="card"><img class="card-img" src="pic/1035766630.webp"/><p class="card-title">Машина времени. Остров доктора Моро | Уэллс Герберт Джордж</div>
-       
-    </div>
+
+    <script>
+
+        let items = [
+            {
+                "id":"1",
+                "img":"pic/1026554365.webp",
+                "title":"Жизнь и удивительные приключения морехода Робинзона Крузо | Дефо Даниель"
+            },
+            {
+                "id":"2",
+                "img":"pic/1027482121.webp",
+                "title":"Удивительные приключения дядюшки Антифера | Верн Жюль"
+            },
+            {
+                "id":"3",
+                "img":"pic/1031637329.webp",
+                "title":"Архив Шерлока Холмса | Конан Дойл Артур"
+            },
+            {
+                "id":"4",
+                "img":"pic/1035766630.webp",
+                "title":"Машина времени. Остров доктора Моро | Уэллс Герберт Джордж"
+            }
+        ];
+
+        var cards = document.createElement('div');
+        cards.setAttribute('class', 'cards');
+
+        items.forEach(function(item, index){
+            var card = document.createElement('div');
+            card.setAttribute('class', 'card');
+            
+            var img = document.createElement('img');
+            img.setAttribute('class', 'card-img');
+            img.src = item.img;
+            card.appendChild(img);
+
+            var title = document.createElement('p');
+            title.setAttribute('class', 'card-title');
+            title.innerHTML = item.title;
+            card.appendChild(title);
+
+            var add = document.createElement('button');
+            add.setAttribute('class', 'card-add-btn');
+            add.data = item.id;
+            add.innerHTML = "Add to Cart";
+            add.onclick = function()
+            {
+                alert(item.id);
+            };
+            card.appendChild(add);
+
+            cards.appendChild(card);
+        });
+
+        document.body.appendChild(cards);
+    </script>
 
     <!--script>
 
