@@ -1,6 +1,18 @@
+<html lang="en">
 <head>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>    
+    <meta charset="utf-8">
+	<title>CintilaBot</title>    
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="robots" content="noindex">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>    
+    <script>
+        function setThemeClass() {
+            document.documentElement.className = Telegram.WebApp.colorScheme;
+        }
+
+        Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+        setThemeClass();
+	</script>
     <style>
         html { font-size: 15px; }
         body { padding: 0.5rem; }
@@ -64,47 +76,65 @@
             {
                 "id":"1",
                 "img":"pic/1026554365.webp",
-                "title":"Жизнь и удивительные приключения морехода Робинзона Крузо | Дефо Даниель"
+                "title":"Жизнь и удивительные приключения морехода Робинзона Крузо | Дефо Даниель",
+                "price":"4990",
+                "priceText":"$4.99"
             },
             {
                 "id":"2",
                 "img":"pic/1027482121.webp",
-                "title":"Удивительные приключения дядюшки Антифера | Верн Жюль"
+                "title":"Удивительные приключения дядюшки Антифера | Верн Жюль",
+                "price":"4990",
+                "priceText":"$4.99"
             },
             {
                 "id":"3",
                 "img":"pic/1031637329.webp",
-                "title":"Архив Шерлока Холмса | Конан Дойл Артур"
+                "title":"Архив Шерлока Холмса | Конан Дойл Артур",
+                "price":"4990",
+                "priceText":"$4.99"
             },
             {
                 "id":"4",
                 "img":"pic/1035766630.webp",
-                "title":"Машина времени. Остров доктора Моро | Уэллс Герберт Джордж"
+                "title":"Машина времени. Остров доктора Моро | Уэллс Герберт Джордж",
+                "price":"4990",
+                "priceText":"$4.99"
             },
             {
                 "id":"5",
                 "img":"pic/1035766643.webp",
-                "title":"Всадник без головы | Рид Томас Майн"
+                "title":"Всадник без головы | Рид Томас Майн",
+                "price":"4990",
+                "priceText":"$4.99"
             },
             {
                 "id":"6",
                 "img":"pic/6040922162.webp",
-                "title":"Дети капитана Гранта"
+                "title":"Дети капитана Гранта",
+                "price":"4990",
+                "priceText":"$4.99"
             },
             {
                 "id":"7",
                 "img":"pic/1008874652.webp",
-                "title":"Путешествия Гулливера | Свифт Джонатан"
+                "title":"Путешествия Гулливера | Свифт Джонатан",
+                "price":"4990",
+                "priceText":"$4.99"
             },
             {
                 "id":"8",
                 "img":"pic/1028267155.webp",
-                "title":"Похищенный | Стивенсон Роберт Льюис"
+                "title":"Похищенный | Стивенсон Роберт Льюис",
+                "price":"4990",
+                "priceText":"$4.99"
             },
             {
                 "id":"9",
                 "img":"pic/1037906765.webp",
-                "title":"Возвращение Шерлока Холмса | Конан Дойл Артур"
+                "title":"Возвращение Шерлока Холмса | Конан Дойл Артур",
+                "price":"4990",
+                "priceText":"$4.99"
             }
         ];
 
@@ -114,6 +144,8 @@
         items.forEach(function(item, index){
             var card = document.createElement('div');
             card.setAttribute('class', 'card');
+            card.setAttribute('data-item-id', item.id);
+            card.setAttribute('data-item-price', item.price);
             
             var img = document.createElement('img');
             img.setAttribute('class', 'card-img');
@@ -121,19 +153,19 @@
             img.src = item.img;
             card.appendChild(img);
 
+            var itemCounts = document.createElement('div');
+            itemCounts.setAttribute('class','item-counter');
+            card.appendChild(itemCounts);
+
             var title = document.createElement('p');
             title.setAttribute('class', 'card-title');
-            title.innerHTML = item.title;
+            title.innerHTML = item.title + "| " + item.priceText;
             card.appendChild(title);
 
             var add = document.createElement('button');
             add.setAttribute('class', 'card-add-btn');
             add.data = item.id;
             add.innerHTML = "Add to Cart";
-            add.onclick = function()
-            {
-                alert(item.id);
-            };
             card.appendChild(add);
 
             cards.appendChild(card);
@@ -142,27 +174,14 @@
         document.body.appendChild(cards);
     </script>
 
-    <!--script>
-
-        bucketCount = 0;
-
-        let bucket = document.createElement("label");
-        bucket.innerHTML = bucketCount;
-        document.body.appendChild(bucket);
-
-        let btn = document.createElement("button");
-        btn.innerHTML = "Add";
-        btn.onclick = function () {
-            bucketCount++;
-            bucket.innerHTML = bucketCount;
-        };
-        document.body.appendChild(btn);
-
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-
-        https://travishorn.com/responsive-grid-in-2-minutes-with-css-grid-layout-4842a41420fe
-        
-    </script-->
-
-    
+    <script src="https://tg.dev/js/jquery.min.js"></script>
+    <script src="mini-market.js"></script>
+    <script>
+        MiniMarket.init({
+            "apiUrl": "",
+            "userId": 0,
+            "userHash": null
+        });
+    </script>
 </body>
+</html>
