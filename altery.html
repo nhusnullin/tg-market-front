@@ -1,9 +1,78 @@
-<h1>Altery flow</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dashboard {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .balance {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .cta-buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .cta-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .transactions {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .transaction {
+            padding: 5px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
 
-<a href = 'https://t.me/Cintila_bot/novaflow'>
-<h2>Digital Assets - Launch Novaflow - ver1</h2>
-</a>
+<div class="dashboard">
+    <h1>Altery</h1>
+    <div class="balance">$1,250.00</div>
+    
+    <div class="cta-buttons">
+        <button onclick="location.href='https:\/\/t.me/Cintila_bot/novaflow'">Digital assets (v1)</button>
+        <button onclick="location.href='https:\/\/t.me/novaflow_bot/novaflow'">Digital assets (v2)</button>
+    </div>
 
-<a href = 'https://t.me/novaflow_bot/novaflow'>
-    <h2>Digital Assets - Launch Novaflow - ver2</h2>
-</a>
+    <h3>Recent Transactions</h3>
+    <div class="transactions">
+        <div class="transaction">Deposit: $500.00 on 2024-10-01</div>
+        <div class="transaction">Withdraw: $200.00 on 2024-10-03</div>
+        <div class="transaction">Transfer: $100.00 on 2024-10-04</div>
+        <div class="transaction">Deposit: $50.00 on 2024-10-05</div>
+    </div>
+</div>
+
+</body>
+</html>
